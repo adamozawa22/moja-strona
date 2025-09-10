@@ -1,4 +1,4 @@
-/* === Windows 7 Aero Light Blue === */
+/* === Windows 7 Aero - White BG & Strong Blue Boxes === */
 
 /* Reset */
 html, body {
@@ -9,7 +9,7 @@ html, body {
 
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #000; /* czarne tło */
+  background: #ffffff; /* BIAŁE TŁO */
   color: #1a1a1a;
   text-align: center;
   overflow-x: hidden;
@@ -17,7 +17,7 @@ body {
 
 /* Nagłówki */
 h1, h2, h3 {
-  color: #0078d7;
+  color: #005a9e;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   margin: 15px 0;
   font-weight: 700;
@@ -35,13 +35,13 @@ a:hover {
   background: rgba(0,120,215,0.1);
 }
 
-/* Okienka Aero Glass */
+/* Okienka/boxy Aero */
 .window {
   width: 90%;
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background: rgba(230,243,255,0.85); /* jasnoniebieski */
+  background: rgba(0,120,215,0.15); /* MOCNIEJSZY NIEBIESKI */
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15), inset 0 1px rgba(255,255,255,0.5);
@@ -61,7 +61,7 @@ table {
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
-  background: rgba(230,243,255,0.9); /* jasnoniebieski */
+  background: rgba(0,120,215,0.15); /* MOCNIEJSZY NIEBIESKI */
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 table th {
@@ -72,7 +72,7 @@ table th {
 table td {
   padding: 10px;
   border: 1px solid rgba(0,0,0,0.05);
-  color: #333;
+  color: #1a1a1a;
 }
 
 /* Inputy */
@@ -82,8 +82,8 @@ input, textarea {
   margin: 10px 0;
   border-radius: 6px;
   border: 1px solid rgba(0,0,0,0.2);
-  background: rgba(230,243,255,0.9); /* jasnoniebieski */
-  color: #333;
+  background: rgba(0,120,215,0.1); /* LEKKO NIEBIESKIE */
+  color: #1a1a1a;
   transition: all 0.3s;
 }
 input:focus, textarea:focus {
@@ -117,12 +117,12 @@ button:hover {
   margin: 20px auto;
 }
 #ksiega li {
-  background: rgba(230,243,255,0.85); /* jasnoniebieski */
+  background: rgba(0,120,215,0.12); /* MOCNIEJSZY NIEBIESKI */
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 8px;
   margin: 10px 0;
   padding: 10px;
-  color: #333;
+  color: #1a1a1a;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s, background 0.3s;
 }
@@ -155,11 +155,10 @@ button:hover {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#5bb8ff, #0078d7);
   border-radius: 6px;
-  border: 2px solid #000;
+  border: 2px solid #ffffff;
 }
-
