@@ -1,6 +1,6 @@
-/* === Windows 7 Aero Style (2007/2008 look) === */
+/* === Windows 7 Aero Style (Dark/Modern Buttons) === */
 
-/* Reset i bazowe ustawienia */
+/* Reset */
 html, body {
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ html, body {
 
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background: linear-gradient(180deg, #1c3b5e 0%, #0f1f33 100%);
+  background: #000000; /* full black */
   color: #ffffff;
   text-align: center;
   overflow-x: hidden;
@@ -18,34 +18,34 @@ body {
 /* Nagłówki */
 h1, h2, h3 {
   color: #eaf6ff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
   margin: 15px 0;
   font-weight: 600;
 }
 
 /* Linki */
 a {
-  color: #aad6ff;
+  color: #4aa3ff;
   text-decoration: none;
-  padding: 3px 6px;
+  padding: 4px 8px;
   border-radius: 4px;
-  transition: background 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
 a:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  color: #fff;
+  background: rgba(74,163,255,0.2);
 }
 
-/* Aero Glass Okienko */
+/* Okienka Aero Glass */
 .window {
   width: 90%;
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   animation: fadeIn 1s ease-out;
@@ -55,40 +55,37 @@ a:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tabela Win7 */
+/* Tabela */
 table {
   width: 90%;
   margin: 20px auto;
   border-collapse: collapse;
   border-radius: 8px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 table th {
-  background: linear-gradient(#3a8dde, #1c3b5e);
+  background: rgba(74,163,255,0.3);
   color: #fff;
   padding: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
-  font-weight: bold;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 table td {
   padding: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.05);
   color: #eaf6ff;
 }
 
-/* Inputy i pola tekstowe */
+/* Inputy */
 input, textarea {
   width: 85%;
   padding: 8px;
   margin: 10px 0;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.07);
   color: #fff;
-  outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
 input:focus, textarea:focus {
@@ -96,24 +93,25 @@ input:focus, textarea:focus {
   box-shadow: 0 0 8px #4aa3ff;
 }
 
-/* Przycisk Aero */
+/* Nowoczesne przyciski */
 button {
-  padding: 8px 18px;
+  padding: 10px 22px;
   border: none;
-  border-radius: 20px;
-  background: linear-gradient(#4aa3ff, #1c3b5e);
+  border-radius: 30px;
+  background: linear-gradient(180deg, #4aa3ff, #0078d7);
   color: #fff;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px rgba(255,255,255,0.4);
-  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px rgba(255,255,255,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 button:hover {
-  background: linear-gradient(#5bb8ff, #1c3b5e);
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, #5bb8ff, #1c7fe0);
 }
 
-/* Księga gości w stylu Win7 */
+/* Księga gości */
 #ksiega {
   list-style: none;
   padding: 0;
@@ -123,12 +121,12 @@ button:hover {
 }
 #ksiega li {
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 8px;
   margin: 10px 0;
   padding: 10px;
   color: #eaf6ff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   transition: transform 0.3s, background 0.3s;
 }
 #ksiega li:hover {
@@ -136,41 +134,35 @@ button:hover {
   background: rgba(255,255,255,0.15);
 }
 
-/* Pasek nawigacyjny */
+/* Nawigacja */
 .nav {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   margin: 20px 0;
 }
 .nav a {
-  background: linear-gradient(#4aa3ff, #1c3b5e);
+  background: linear-gradient(180deg, #4aa3ff, #0078d7);
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 20px;
   color: #fff;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px rgba(255,255,255,0.3);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4), inset 0 1px rgba(255,255,255,0.3);
   transition: transform 0.2s;
 }
 .nav a:hover {
   transform: scale(1.1);
 }
 
-/* Marquee */
-marquee {
-  font-weight: bold;
-  color: #aad6ff;
-  text-shadow: 0 0 8px rgba(0,0,0,0.5);
-}
-
-/* Scrollbar Win7 */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f1f33;
+  background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#4aa3ff, #1c3b5e);
+  background: linear-gradient(#4aa3ff, #0078d7);
   border-radius: 6px;
-  border: 2px solid #0f1f33;
+  border: 2px solid #000;
 }
+
