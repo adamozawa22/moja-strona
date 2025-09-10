@@ -1,2 +1,1 @@
-# moja-strona
-lolk
+# OLDwebsite
