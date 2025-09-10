@@ -84,3 +84,82 @@ input, textarea {
   border: 1px solid rgba(0,0,0,0.2);
   background: rgba(255,255,255,0.7);
   color: #333;
+  transition: all 0.3s;
+}
+input:focus, textarea:focus {
+  border: 1px solid #0078d7;
+  box-shadow: 0 0 6px rgba(0,120,215,0.5);
+}
+
+/* Nowoczesne przyciski */
+button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #4aa3ff, #0078d7);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px rgba(255,255,255,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #5bb8ff, #1c7fe0);
+}
+
+/* Księga gości */
+#ksiega {
+  list-style: none;
+  padding: 0;
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+#ksiega li {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s, background 0.3s;
+}
+#ksiega li:hover {
+  transform: scale(1.02);
+  background: rgba(255,255,255,0.9);
+}
+
+/* Nawigacja */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+.nav a {
+  background: linear-gradient(180deg, #4aa3ff, #0078d7);
+  padding: 8px 14px;
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 1px rgba(255,255,255,0.3);
+  transition: transform 0.2s;
+}
+.nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f6fb;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#4aa3ff, #0078d7);
+  border-radius: 6px;
+  border: 2px solid #f2f6fb;
+}
+
