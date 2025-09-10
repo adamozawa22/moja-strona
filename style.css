@@ -1,9 +1,6 @@
-/* === Retro Aero 2007/08 - style.css ===
-   Bazuję na Twoim kodzie + dodaję "glass", nagłówki z odbiciem,
-   przyciski w stylu glossy, nawigację z tabami i animowane tło.
-*/
+/* === Retro Aero 2007/08 + ANIMACJE === */
 
-/* --- Podstawa (Twój kod, lekko poprawiony) --- */
+/* Podstawy */
 html, body {
   height: 100%;
   margin: 0;
@@ -11,216 +8,135 @@ html, body {
 }
 
 body {
-  font-family: "Comic Sans MS", "ComicNeue", cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   color: rgb(132, 0, 255);
   background:
     radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 10%),
     linear-gradient(180deg, #000000 0%, #060006 50%, #0b0011 100%);
   text-align: center;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  animation: bgMove 40s linear infinite; /* animowane tło */
 }
 
-/* subtelne animowane 'gwiazdki' w tle */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.25;
-  pointer-events: none;
-  animation: bgShift 30s linear infinite;
+@keyframes bgMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -400px; }
 }
-@keyframes bgShift { from { transform: translateY(0) } to { transform: translateY(-200px) } }
 
-/* nagłówki z lekkim blaze i odbiciem */
+/* Migający neon nagłówków */
 h1, h2, h3 {
   color: rgb(132, 0, 255);
   text-shadow:
-    0 1px 0 rgba(255,255,255,0.03),
-    0 2px 8px rgba(132,0,255,0.35);
+    0 0 8px rgba(132,0,255,0.6),
+    0 0 16px rgba(132,0,255,0.4);
+  animation: neonGlow 2.5s ease-in-out infinite alternate;
   margin: 0.4em 0;
-  -webkit-box-reflect: below 2px linear-gradient(transparent, rgba(255,255,255,0.03));
+}
+@keyframes neonGlow {
+  0% { text-shadow: 0 0 8px rgba(132,0,255,0.5); }
+  100% { text-shadow: 0 0 20px rgba(132,0,255,1); }
 }
 
-/* linki */
+/* Linki podświetlane */
 a {
   color: rgb(132, 0, 255);
   text-decoration: none;
-  transition: all 0.18s ease;
   padding: 2px 6px;
   border-radius: 3px;
+  transition: all 0.3s ease;
 }
 a:hover {
   color: #0b0011;
   background: rgb(132, 0, 255);
-  box-shadow: 0 6px 20px rgba(132,0,255,0.2);
+  box-shadow: 0 0 20px rgba(132,0,255,0.7);
+  transform: scale(1.1);
 }
 
-/* --- Okienka typu "glass" (Aero) --- */
+/* Okienka lekko wjeżdżają */
 .window {
-  width: calc(90% - 40px);
-  max-width: 980px;
   margin: 18px auto;
   padding: 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid rgba(132,0,255,0.12);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(132,0,255,0.2);
   border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
-  backdrop-filter: blur(6px) saturate(1.1);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(132,0,255,0.2);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
 }
-.window:hover { transform: translateY(-4px); box-shadow: 0 18px 50px rgba(132,0,255,0.14); }
+@keyframes slideUp {
+  to { transform: translateY(0); opacity: 1; }
+}
 
-/* --- Tabela w stylu retro --- */
+/* Tabela – pulsujące obramowanie */
 table {
-  background: linear-gradient(180deg, rgba(151,0,252,0.52), rgba(151,0,252,0.35));
-  color: rgb(232, 210, 255);
+  background: rgba(151,0,252,0.5);
+  color: #fff;
   border-collapse: collapse;
   margin: 10px auto;
   width: 90%;
-  max-width: 1000px;
   border-radius: 6px;
   overflow: hidden;
+  animation: tablePulse 3s infinite alternate;
 }
-table td, table th {
-  border: 1px solid rgba(132,0,255,0.35);
-  padding: 10px;
-  font-size: 14px;
-}
-table th {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.05));
-  text-transform: uppercase;
-  letter-spacing: 1px;
+@keyframes tablePulse {
+  0% { box-shadow: 0 0 10px rgba(132,0,255,0.2); }
+  100% { box-shadow: 0 0 30px rgba(132,0,255,0.5); }
 }
 
-/* --- Marquee retro (jesli używasz) --- */
-marquee {
-  color: rgb(132, 0, 255);
-  font-weight: bold;
-  font-size: 20px;
-  text-shadow: 0 2px 8px rgba(132,0,255,0.5);
-}
-
-/* --- Księga gości --- */
-#ksiega {
-  list-style: none;
-  padding: 0;
-  width: 90%;
-  max-width: 900px;
-  margin: 10px auto;
-}
+/* Księga gości – lekki bounce */
 #ksiega li {
-  background: linear-gradient(180deg, rgba(151,0,252,0.27), rgba(151,0,252,0.16));
+  background: rgba(151,0,252,0.27);
   margin: 8px 0;
-  padding: 10px 12px;
-  border: 1px solid rgba(132, 0, 255, 0.35);
+  padding: 10px;
+  border: 1px solid rgba(132,0,255,0.35);
   border-radius: 8px;
-  transition: transform 0.2s, background 0.2s;
-  text-align: left;
   color: #efe3ff;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 #ksiega li:hover {
-  transform: scale(1.02);
-  background: rgba(132, 0, 255, 0.95);
+  transform: scale(1.05) rotate(-1deg);
+  background: rgba(132,0,255,0.9);
   color: #0b0011;
+  box-shadow: 0 0 15px rgba(132,0,255,0.6);
 }
 
-/* inputy i textarea (Twoje) + glossy focus */
-input, textarea, select {
+/* Input i textarea z animacją focus */
+input, textarea {
   background: rgba(0,0,0,0.6);
   color: rgb(132, 0, 255);
   border: 1px solid rgba(132,0,255,0.45);
   border-radius: 6px;
-  margin: 6px 0;
   padding: 8px;
-  width: 90%;
-  max-width: 800px;
-  outline: none;
-  transition: box-shadow 0.12s ease, transform 0.12s ease;
+  width: 80%;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
-input:focus, textarea:focus, select:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(132,0,255,0.15);
+input:focus, textarea:focus {
+  box-shadow: 0 0 15px rgba(132,0,255,0.8);
+  transform: scale(1.05);
 }
 
-/* --- Duży przycisk retro glossy --- */
-.btn {
-  display: inline-block;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 12px;
+/* Przycisk bounce */
+button {
+  background: rgb(132, 0, 255);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-  color: #0b0011;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font-weight: bold;
+  animation: buttonPulse 2s infinite;
+  transition: transform 0.2s;
 }
-.btn.primary {
-  background: linear-gradient(180deg, rgba(132,0,255,1), rgba(132,0,255,0.85));
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+@keyframes buttonPulse {
+  0% { box-shadow: 0 0 5px rgba(132,0,255,0.5); }
+  50% { box-shadow: 0 0 20px rgba(132,0,255,0.9); }
+  100% { box-shadow: 0 0 5px rgba(132,0,255,0.5); }
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(132,0,255,0.12); }
-
-/* małe neonowe ikony/napisy */
-.neon {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: rgba(0,0,0,0.35);
-  box-shadow: 0 0 30px rgba(132,0,255,0.12);
-  text-shadow: 0 2px 10px rgba(132,0,255,0.45);
-}
-
-/* nawigacja - 'tabs' z efektem szkła */
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 12px 0;
-}
-.nav a {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(132,0,255,0.16);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-}
-
-/* mały GIF/footer */
-.footer-gif {
-  margin: 18px auto;
-  width: 64px;
-  height: 64px;
-  display: block;
-  filter: drop-shadow(0 10px 24px rgba(132,0,255,0.12));
-}
-
-/* responsywność prosta */
-@media (max-width: 600px) {
-  table, #ksiega, input, textarea, .window { width: 94% }
-  h1 { font-size: 20px }
-}
-
-/* drobne animacje */
-@keyframes neonPulse {
-  0% { text-shadow: 0 0 6px rgba(132,0,255,0.25) }
-  50% { text-shadow: 0 0 26px rgba(132,0,255,0.55) }
-  100% { text-shadow: 0 0 6px rgba(132,0,255,0.25) }
-}
-.h1-neon { animation: neonPulse 3s ease-in-out infinite }
-
-/* utility */
-.center { margin: 0 auto; display: block; text-align: center; }
-
-/* ostatnia rzec: drobny retro scrollbar (tylko webkit) */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.4); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(132,0,255,0.6), rgba(132,0,255,0.9));
-  border-radius: 8px;
-  border: 2px solid rgba(0,0,0,0.25);
+button:hover {
+  transform: scale(1.1);
+  background: white;
+  color: rgb(132, 0, 255);
 }
 
