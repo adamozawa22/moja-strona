@@ -1,37 +1,36 @@
-<script>
-async function loadEntries() {
-  const res = await fetch('/.netlify/functions/guestbook');
-  const data = await res.json();
-  const guestbook = document.getElementById('guestbook');
-  guestbook.innerHTML = '';
-  data.reverse().forEach(e => {
-    const div = document.createElement('div');
-    div.classList.add('message');
-    div.innerHTML = `<strong>${e.name}</strong>: ${e.message}`;
-    guestbook.appendChild(div);
-  });
-}
-
-async function saveEntry(event) {
-  event.preventDefault();
-  const name = document.querySelector('[name="name"]').value;
-  const message = document.querySelector('[name="message"]').value;
-
-  await fetch('/.netlify/functions/guestbook', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, message })
-  });
-
-  document.querySelector('form').reset();
-  loadEntries();
-}
-
-document.querySelector('form').addEventListener('submit', saveEntry);
-loadEntries();
-</script>
-
-
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Moja Strona z 2000</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body background="bg.gif">
+  <center>
+   <h1><img src="logo.gif" alt="LOGO"></h1>
+</a>
+    <marquee>💾 Witaj na mojej stronie 💾</marquee>
+    <table border="1" width="80%">
+      <tr>
+        <td><a href="index.html">🏠 Strona główna</a></td>
+        <td><a href="cytatdnia.html">📃 Cytat dnia</a></td>
+        <td><a href="blog.html">📝 Blog</a></td>
+        <td><a href="slodkiekotki.html">📷 Słodkie Kotki</a></td>
+        <td><a href="contact.html">📧 Kontakt</a></td>
+     <td><a href="browser-test.html">📡 browser test</a></td>
+      </tr>
+    </table>
+    <h2>🔥 Nowości 🔥</h2>
+    <p>Witaj na mojej pierwszej stronie! 🤘</p>
+  <hr>
+<center>
+  <img src="linuxnow.jpg" alt="Linux Now!" width="88" height="31">
+  <p><small>2025-2025 Moja Strona Retro</small></p>
+</center>
+<a href="https://www.freecounterstat.com" title="website page view counter"><img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=cw29nxzmczg72wuz5d3ccgm6ste7q8ny" border="0" title="website page view counter" alt="website page view counter"></a>
+</body>
+</html>
+<hr>
 
 
 
