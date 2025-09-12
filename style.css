@@ -175,53 +175,82 @@ button:hover {
   border-radius: 6px;
   border: 2px solid #ffffff;
 }
-/* === RESPONSYWNOŚĆ === */
-@media (max-width: 1024px) {
-  .window, table, #ksiega {
-    width: 95%;
-  }
+
+/* === NAWIGACJA === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
 }
 
+.logo img {
+  height: 50px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.menu li a:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.menu-toggle {
+  display: none; /* Domyślnie ukryty na PC */
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* === RESPONSYWNOŚĆ – tylko na telefonie === */
 @media (max-width: 768px) {
-  h1, h2, h3 {
-    font-size: 1.4em;
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0078d7;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 200px;
+    padding: 10px 0;
+    z-index: 100;
   }
-  table {
-    font-size: 0.9em;
+
+  .menu.show {
+    display: flex;
   }
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
+
+  .menu li {
+    text-align: center;
+    margin: 5px 0;
   }
-  .nav a {
-    padding: 8px 14px;
-    font-size: 0.9em;
-  }
-  input, textarea {
-    width: 95%;
+
+  .menu-toggle {
+    display: block; /* Pojawia się tylko na telefonie */
   }
 }
 
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-  h1 img {
-    max-width: 200px;
-  }
-  table td, table th {
-    padding: 8px;
-    font-size: 0.85em;
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 0.9em;
-  }
-  .nav a {
-    padding: 6px 10px;
-    font-size: 0.8em;
-  }
-}
 
 
 
