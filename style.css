@@ -221,35 +221,35 @@ button:hover {
   cursor: pointer;
 }
 
-/* === RESPONSYWNOŚĆ – tylko na telefonie === */
+/* Stare menu normalnie widać */
+.old-menu {
+  display: table;
+  margin: 20px auto;
+}
+
+/* Hamburger domyślnie ukryty */
+.navbar {
+  display: none;
+}
+
+/* Tylko na tel: pokaz hamburger, ukryj stare menu */
 @media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #0078d7;
-    position: absolute;
-    top: 70px;
-    right: 20px;
+  .old-menu {
+    display: none; /* Ukrywamy stare */
+  }
+  .navbar {
+    display: flex; /* Pokazujemy hamburgera */
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+    padding: 10px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    width: 200px;
-    padding: 10px 0;
-    z-index: 100;
-  }
-
-  .menu.show {
-    display: flex;
-  }
-
-  .menu li {
-    text-align: center;
-    margin: 5px 0;
-  }
-
-  .menu-toggle {
-    display: block; /* Pojawia się tylko na telefonie */
+    position: relative;
   }
 }
+
+
 
 
 
