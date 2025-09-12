@@ -221,33 +221,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* Stare menu normalnie widać */
-.old-menu {
-  display: table;
-  margin: 20px auto;
-}
-
-/* Hamburger domyślnie ukryty */
-.navbar {
-  display: none;
-}
-
-/* Tylko na tel: pokaz hamburger, ukryj stare menu */
-@media (max-width: 768px) {
-  .old-menu {
-    display: none; /* Ukrywamy stare */
-  }
-  .navbar {
-    display: flex; /* Pokazujemy hamburgera */
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, #5bb8ff, #0078d7);
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    position: relative;
-  }
-}
 
 
 
