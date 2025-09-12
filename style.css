@@ -351,9 +351,15 @@ button:hover {
   border: 2px solid #ffffff;
 
 }
-/* === NAVBAR RETRO === */
+/* === STARE MENU === */
+.old-menu {
+  display: table; /* widoczne na PC */
+  margin: 20px auto;
+}
+
+/* === HAMBURGER MENU === */
 .navbar {
-  display: none; /* domyślnie ukryte na PC, pokażemy na tel */
+  display: none; /* ukryte na PC */
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to bottom, #5bb8ff, #0078d7);
@@ -398,8 +404,14 @@ button:hover {
 
 /* === RESPONSYWNOŚĆ === */
 @media (max-width: 768px) {
+  /* Stare menu znika */
+  .old-menu {
+    display: none;
+  }
+
+  /* Hamburger pokazuje się na telefonie */
   .navbar {
-    display: flex; /* hamburger tylko na tel */
+    display: flex;
   }
 
   .menu {
@@ -430,3 +442,4 @@ body, h2, p, img, marquee {
   max-width: 100%;
   box-sizing: border-box;
 }
+
