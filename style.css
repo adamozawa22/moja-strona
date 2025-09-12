@@ -175,5 +175,53 @@ button:hover {
   border-radius: 6px;
   border: 2px solid #ffffff;
 }
+/* === RESPONSYWNOŚĆ === */
+@media (max-width: 1024px) {
+  .window, table, #ksiega {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3 {
+    font-size: 1.4em;
+  }
+  table {
+    font-size: 0.9em;
+  }
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .nav a {
+    padding: 8px 14px;
+    font-size: 0.9em;
+  }
+  input, textarea {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  h1 img {
+    max-width: 200px;
+  }
+  table td, table th {
+    padding: 8px;
+    font-size: 0.85em;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+  .nav a {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+}
+
 
 
