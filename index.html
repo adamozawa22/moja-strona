@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <header class="big-logo">
-  <img src="logo.gif" alt="LOGO">
-</header>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moja Strona z 2000</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('show');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const linuxGif = document.querySelector('img[src="linuxnow.gif"]');
+      if (linuxGif) {
+        linuxGif.style.cursor = 'pointer';
+        linuxGif.addEventListener('click', () => {
+          window.location.href = 'snake.html'; // przekierowanie do gry Snake
+        });
+      }
+    });
+  </script>
 </head>
 <body background="bg.gif">
+  <header class="big-logo">
+    <img src="logo.gif" alt="LOGO">
+  </header>
 
   <!-- STARE MENU (tabela) -->
   <table class="old-menu" border="1" width="80%">
@@ -54,15 +69,9 @@
       <img src="https://counter5.optistats.ovh/private/freecounterstat.php?c=cw29nxzmczg72wuz5d3ccgm6ste7q8ny" border="0" alt="website page view counter">
     </a>
   </center>
-
-  <!-- JS na dole -->
-  <script>
-    function toggleMenu() {
-      document.querySelector('.menu').classList.toggle('show');
-    }
-  </script>
-
 </body>
 </html>
+
+
 
 
