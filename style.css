@@ -443,3 +443,19 @@ body, h2, p, img, marquee {
   box-sizing: border-box;
 }
 
+/* Duże logo */
+.big-logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.big-logo img {
+  max-width: 400px;
+}
+
+/* Ukryj DUŻE logo na telefonie */
+@media (max-width: 768px) {
+  .big-logo {
+    display: none;
+  }
+
