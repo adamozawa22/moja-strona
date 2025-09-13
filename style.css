@@ -455,7 +455,27 @@ body, h2, p, img, marquee {
 
 /* Ukryj DUŻE logo na telefonie */
 @media (max-width: 768px) {
+  table img {
+  width: 100%;        /* obrazek zajmuje całą komórkę */
+  max-width: 300px;   /* ale nie większy niż 300px */
+  height: auto;       /* zachowuje proporcje */
+  display: block;     /* usuwa ewentualne marginesy inline */
+  margin: 0 auto;     /* wyśrodkowanie w komórce */
+}
+
+/* Dodatkowo możesz zrobić, żeby tabela przewijała się na małych ekranach */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+  }
+  table td {
+    display: block;      /* każda komórka w nowym wierszu */
+    margin-bottom: 10px; /* odstęp między zdjęciami */
+  }
+}
+
   .big-logo {
     display: none;
   }
+
 
