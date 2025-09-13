@@ -53,9 +53,115 @@
       <li><a href="browser-test.html">📡 Browser Test</a></li>
     </ul>
   </nav>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>LED Retro Napis</title>
+<style>
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.led-text {
+  display: flex;
+  overflow: hidden;
+  width: 300px;
+  height: 50px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 1px;
+  border-radius: 50%;
+  background: red;
+}
+</style>
+</head>
+<body>
+<div class="led-text" id="led"></div>
 
-  <center>
-    <marquee>💾 Witaj na mojej stronie 💾</marquee>
+<script>
+// prosty alfabet 5x7 dla liter A i B (przykład)
+const alphabet = {
+  "A": [
+    "01110",
+    "10001",
+    "11111",
+    "10001",
+    "10001",
+    "10001",
+    "10001"
+  ],
+  "B": [
+    "11110",
+    "10001",
+    "11110",
+    "10001",
+    "10001",
+    "10001",
+    "11110"
+  ],
+  " ": [
+    "00000",
+    "00000",
+    "00000",
+    "00000",
+    "00000",
+    "00000",
+    "00000"
+  ]
+};
+
+const text = "AB AB "; // tutaj wpisz swój tekst
+const led = document.getElementById("led");
+
+let display = [];
+
+function drawText() {
+  display = [];
+  for(let row=0; row<7; row++){
+    let line = [];
+    for(let char of text){
+      let pattern = alphabet[char] || alphabet[" "];
+      for(let bit of pattern[row]){
+        line.push(bit === "1" ? 1 : 0);
+      }
+      line.push(0); // odstęp między literami
+    }
+    display.push(line);
+  }
+}
+
+drawText();
+
+// animacja przesuwania
+let offset = 0;
+function render() {
+  led.innerHTML = "";
+  for(let row=0; row<7; row++){
+    for(let col=0; col<30; col++){
+      let dot = document.createElement("div");
+      dot.className = "dot";
+      if(display[row][(col + offset) % display[row].length]){
+        dot.style.background = "red";
+      } else {
+        dot.style.background = "black";
+      }
+      led.appendChild(dot);
+    }
+  }
+  offset = (offset + 1) % display[0].length;
+}
+
+setInterval(render, 100); // szybkość przesuwania
+</script>
+</body>
+</html>
+
 
     <h2>🔥 Nowości 🔥</h2>
     <p>Witaj na mojej pierwszej stronie! 🤘</p>
@@ -71,6 +177,7 @@
   </center>
 </body>
 </html>
+
 
 
 
