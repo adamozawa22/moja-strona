@@ -1,86 +1,480 @@
+/* === MAX Windows 7 / Vista Style 2009-2010 === */
+
+
+
 /* Reset */
-* {
+
+html, body {
+
   margin: 0;
+
   padding: 0;
-  box-sizing: border-box;
+
+  height: 100%;
+
 }
+
+
 
 body {
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  background-color: #121212; /* Ciemne tło */
-  color: #e0e0e0; /* Jasny tekst */
-  line-height: 1.6;
-  min-height: 100vh;
+
+  font-family: "Segoe UI", Tahoma, sans-serif;
+
+  background: #ffffff; /* Białe tło */
+
+  color: #000;
+
+  text-align: center;
+
+  overflow-x: hidden;
+
+  background-image: radial-gradient(circle at top, #ffffff 0%, #e6f3ff 100%);
+
 }
 
+
+
+/* Nagłówki */
+
+h1, h2, h3 {
+
+  color: #005a9e;
+
+  text-shadow: 0 0 5px rgba(0, 120, 215, 0.6), 0 0 10px rgba(0, 120, 215, 0.4);
+
+  font-weight: 700;
+
+  margin: 20px 0;
+
+}
+
+
+
 /* Linki */
+
 a {
-  color: #1e90ff;
+
+  color: #0078d7;
+
   text-decoration: none;
-  transition: color 0.3s;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  transition: all 0.3s ease;
+
+  background: linear-gradient(to bottom, #e6f3ff, #bcdcff);
+
+  box-shadow: inset 0 1px #ffffff, 0 2px 6px rgba(0,0,0,0.15);
+
 }
 
 a:hover {
-  color: #63b3ed;
+
+  background: linear-gradient(to bottom, #ffffff, #a7d3ff);
+
+  box-shadow: inset 0 1px #ffffff, 0 4px 12px rgba(0,0,0,0.2);
+
 }
 
-/* Nagłówki */
-h1, h2, h3, h4, h5, h6 {
+
+
+/* Aero Panel (okienka) */
+
+.window {
+
+  width: 90%;
+
+  max-width: 900px;
+
+  margin: 30px auto;
+
+  padding: 25px;
+
+  background: rgba(0,120,215,0.15);
+
+  border: 1px solid rgba(0,0,0,0.25);
+
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25), inset 0 1px rgba(255,255,255,0.8);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: fadeIn 1s ease-out;
+
+}
+
+@keyframes fadeIn {
+
+  from { opacity: 0; transform: translateY(30px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+/* Tabela MAX */
+
+table {
+
+  width: 90%;
+
+  margin: 30px auto;
+
+  border-collapse: collapse;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: linear-gradient(to bottom, #d7ebff, #b0d4ff);
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
+}
+
+table th {
+
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+
   color: #fff;
-  margin-bottom: 1rem;
+
+  padding: 12px;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  font-size: 1.1em;
+
 }
 
-/* Przyciski */
+table td {
+
+  padding: 12px;
+
+  border: 1px solid rgba(0,0,0,0.1);
+
+  background: rgba(255,255,255,0.85);
+
+  color: #000;
+
+}
+
+
+
+/* Inputy */
+
+input, textarea {
+
+  width: 85%;
+
+  padding: 10px;
+
+  margin: 12px 0;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(0,0,0,0.3);
+
+  background: linear-gradient(to bottom, #ffffff, #e6f3ff);
+
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+
+  transition: all 0.3s;
+
+}
+
+input:focus, textarea:focus {
+
+  border: 1px solid #0078d7;
+
+  box-shadow: 0 0 8px rgba(0,120,215,0.7);
+
+}
+
+
+
+/* Przyciski Aero */
+
 button {
-  background-color: #1e1e1e;
+
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+
   color: #fff;
-  border: 1px solid #333;
-  padding: 0.5rem 1rem;
+
+  font-weight: bold;
+
+  font-size: 1em;
+
   cursor: pointer;
-  transition: background 0.3s;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.5), 0 5px 15px rgba(0,0,0,0.3);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
 }
 
 button:hover {
-  background-color: #333;
+
+  transform: translateY(-2px);
+
+  background: linear-gradient(to bottom, #6bc0ff, #1c7fe0);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.6), 0 6px 18px rgba(0,0,0,0.4);
+
 }
 
-/* Tabele */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
+
+
+/* Księga gości */
+
+#ksiega {
+
+  list-style: none;
+
+  padding: 0;
+
+  width: 90%;
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
 }
 
-th, td {
-  border: 1px solid #333;
-  padding: 0.5rem;
-  text-align: left;
+#ksiega li {
+
+  background: linear-gradient(to bottom, #e6f3ff, #c7e0ff);
+
+  border: 1px solid rgba(0,0,0,0.2);
+
+  border-radius: 10px;
+
+  margin: 12px 0;
+
+  padding: 12px;
+
+  color: #000;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+  transition: transform 0.3s, box-shadow 0.3s;
+
 }
 
-th {
-  background-color: #1f1f1f;
+#ksiega li:hover {
+
+  transform: scale(1.03);
+
+  box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+
 }
 
-/* Formularze */
-input, textarea, select {
-  background-color: #1e1e1e;
+
+
+/* Nawigacja */
+
+.nav {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin: 25px 0;
+
+}
+
+.nav a {
+
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+
+  padding: 10px 18px;
+
+  border-radius: 20px;
+
   color: #fff;
-  border: 1px solid #333;
-  padding: 0.5rem;
-  width: 100%;
-  margin-bottom: 1rem;
+
+  font-weight: bold;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 4px 12px rgba(0,0,0,0.3);
+
+  transition: transform 0.2s, box-shadow 0.2s;
+
 }
 
-/* Kontenery / sekcje */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+.nav a:hover {
+
+  transform: scale(1.15);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.6), 0 6px 18px rgba(0,0,0,0.4);
+
 }
 
-/* Minimalistyczny nagłówek */
-header {
-  padding: 1rem;
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+
+  width: 12px;
+
+}
+
+::-webkit-scrollbar-track {
+
+  background: #e6f3ff;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: linear-gradient(#5bb8ff, #0078d7);
+
+  border-radius: 6px;
+
+  border: 2px solid #ffffff;
+
+}
+/* === STARE MENU === */
+.old-menu {
+  display: table; /* widoczne na PC */
+  margin: 20px auto;
+}
+
+/* === HAMBURGER MENU === */
+.navbar {
+  display: none; /* ukryte na PC */
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.menu li a:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* === RESPONSYWNOŚĆ === */
+@media (max-width: 768px) {
+  /* Stare menu znika */
+  .old-menu {
+    display: none;
+  }
+
+  /* Hamburger pokazuje się na telefonie */
+  .navbar {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0078d7;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 200px;
+    padding: 10px 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    text-align: center;
+    margin: 5px 0;
+  }
+}
+
+/* Cała zawartość responsywna */
+body, h2, p, img, marquee {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Duże logo */
+.big-logo {
   text-align: center;
-  border-bottom: 1px solid #333;
+  margin: 20px 0;
 }
+
+.big-logo img {
+  max-width: 400px;
+}
+
+/* Ukryj DUŻE logo na telefonie */
+@media (max-width: 768px) {
+  table img {
+  width: 100%;        /* obrazek zajmuje całą komórkę */
+  max-width: 300px;   /* ale nie większy niż 300px */
+  height: auto;       /* zachowuje proporcje */
+  display: block;     /* usuwa ewentualne marginesy inline */
+  margin: 0 auto;     /* wyśrodkowanie w komórce */
+}
+
+/* Dodatkowo możesz zrobić, żeby tabela przewijała się na małych ekranach */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+  }
+  table td {
+    display: block;      /* każda komórka w nowym wierszu */
+    margin-bottom: 10px; /* odstęp między zdjęciami */
+  }
+}
+
+  .big-logo {
+    display: none;
+  }
+
