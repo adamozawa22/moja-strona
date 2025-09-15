@@ -182,16 +182,6 @@ function capturePhoto(){
   }
 }
 
-// 🌐 Ping test
-pingTest.onclick=async()=>{
-  const start=performance.now();
-  try{
-    await fetch("https://www.google.com",{mode:"no-cors"});
-    const ms=Math.round(performance.now()-start);
-    netStatus.textContent="✅ Internet OK, ping: "+ms+"ms";
-    log("Ping "+ms+"ms");
-  }catch(e){netStatus.textContent="❌ Brak neta";log("Ping fail: "+e);}
-};
 </script>
 
 </body>
