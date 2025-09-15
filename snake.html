@@ -3,95 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snake</title>
+<title>Snake Retro</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Minimalne style dla canvas */
-  body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #121212; }
-  canvas { background: #000; border: 2px solid #fff; }
+  /* Retro mini canvas */
+  #game {
+    background: #111;
+    border: 2px solid #0f0;
+    display: block;
+    margin: 20px auto;
+    image-rendering: pixelated;
+  }
 </style>
 </head>
 <body>
-<canvas id="game" width="100" height="100"></canvas>
+
+<canvas id="game" width="200" height="200"></canvas>
+
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-const box = 20;
-let snake = [{x: 10 * box, y: 10 * box}];
+const box = 10; // mały kwadrat
+let snake = [{x: 10*box, y: 10*box}];
 let direction = "RIGHT";
-let food = {
-  x: Math.floor(Math.random() * 20) * box,
-  y: Math.floor(Math.random() * 20) * box
-};
+let food = {x: Math.floor(Math.random()*20)*box, y: Math.floor(Math.random()*20)*box};
 let score = 0;
 
-document.addEventListener("keydown", changeDirection);
-
-function changeDirection(event) {
-  const key = event.key;
-  if(key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-  if(key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-  if(key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-  if(key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
-}
+document.addEventListener("keydown", e => {
+  if(e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+  if(e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+  if(e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+  if(e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+});
 
 function draw() {
-  ctx.fillStyle = "#000";
+  ctx.fillStyle = "#111";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  for(let i=0; i<snake.length; i++) {
-    ctx.fillStyle = (i === 0) ? "lime" : "green";
+  for(let i=0; i<snake.length; i++){
+    ctx.fillStyle = i === 0 ? "#0f0" : "#070";
     ctx.fillRect(snake[i].x, snake[i].y, box, box);
   }
 
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "#f00";
   ctx.fillRect(food.x, food.y, box, box);
 
-  let snakeX = snake[0].x;
-  let snakeY = snake[0].y;
+  let headX = snake[0].x;
+  let headY = snake[0].y;
 
-  if(direction === "LEFT") snakeX -= box;
-  if(direction === "RIGHT") snakeX += box;
-  if(direction === "UP") snakeY -= box;
-  if(direction === "DOWN") snakeY += box;
+  if(direction === "LEFT") headX -= box;
+  if(direction === "RIGHT") headX += box;
+  if(direction === "UP") headY -= box;
+  if(direction === "DOWN") headY += box;
 
-  // Snake eat food
-  if(snakeX === food.x && snakeY === food.y){
+  // jedzenie
+  if(headX === food.x && headY === food.y){
     score++;
-    food = {
-      x: Math.floor(Math.random() * 20) * box,
-      y: Math.floor(Math.random() * 20) * box
-    };
+    food = {x: Math.floor(Math.random()*20)*box, y: Math.floor(Math.random()*20)*box};
   } else {
     snake.pop();
   }
 
-  let newHead = {x: snakeX, y: snakeY};
+  let newHead = {x: headX, y: headY};
 
-  // Game over
-  if(snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)){
+  // game over
+  if(headX < 0 || headY < 0 || headX >= canvas.width || headY >= canvas.height || collision(newHead, snake)){
     clearInterval(game);
-    alert("Game Over! Twój wynik: " + score);
+    alert("Game Over! Wynik: " + score);
   }
 
   snake.unshift(newHead);
 }
 
-function collision(head, array){
-  for(let i = 0; i < array.length; i++){
-    if(head.x === array[i].x && head.y === array[i].y){
-      return true;
-    }
-  }
-  return false;
+function collision(head, arr){
+  return arr.some(s => s.x === head.x && s.y === head.y);
 }
 
 let game = setInterval(draw, 150);
 </script>
-</body>
-</html>
-
-  </script>
 </body>
 </html>
