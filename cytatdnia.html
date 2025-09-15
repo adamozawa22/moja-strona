@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+   <!-- STARE MENU (tabela) -->
+  <table class="old-menu" border="1" width="80%">
+    <tr>
+      <td><a href="index.html">🏠 Strona główna</a></td>
+      <td><a href="cytatdnia.html">📃 Cytat dnia</a></td>
+      <td><a href="changelog.html">📝 Changelog</a></td>
+      <td><a href="zdjecia.html">📷 Zdjęcia</a></td>
+      <td><a href="contact.html">📧 Kontakt</a></td>
+      <td><a href="browser-test.html">📡 Browser Test</a></td>
+    </tr>
+  </table>
+
+  <!-- HAMBURGER MENU (tylko na telefon) -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo.gif" alt="LOGO">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul class="menu">
+      <li><a href="index.html">🏠 Strona główna</a></li>
+      <li><a href="cytatdnia.html">📃 Cytat dnia</a></li>
+      <li><a href="changelog.html">📝 Changelog</a></li>
+      <li><a href="zdjecia.html">📷 Zdjęcia</a></li>
+      <li><a href="contact.html">📧 Kontakt</a></li>
+      <li><a href="browser-test.html">📡 Browser Test</a></li>
+    </ul>
+  </nav>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 <body background="bg.gif">
   <center>
