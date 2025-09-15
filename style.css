@@ -163,3 +163,131 @@ button:hover {
   .menu { display: none; flex-direction: column; background-color: #1e90ff; position: absolute; top: 70px; right: 20px; border-radius: 8px; width: 200px; padding: 10px 0; }
   .menu.show { display: flex; }
 }
+/* === STARE MENU === */
+.old-menu {
+  display: table; /* widoczne na PC */
+  margin: 20px auto;
+}
+
+/* === HAMBURGER MENU === */
+.navbar {
+  display: none; /* ukryte na PC */
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.menu li a:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* === RESPONSYWNOŚĆ === */
+@media (max-width: 768px) {
+  /* Stare menu znika */
+  .old-menu {
+    display: none;
+  }
+
+  /* Hamburger pokazuje się na telefonie */
+  .navbar {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0078d7;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 200px;
+    padding: 10px 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    text-align: center;
+    margin: 5px 0;
+  }
+}
+
+/* Cała zawartość responsywna */
+body, h2, p, img, marquee {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Duże logo */
+.big-logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.big-logo img {
+  max-width: 400px;
+}
+
+/* Ukryj DUŻE logo na telefonie */
+@media (max-width: 768px) {
+  table img {
+  width: 100%;        /* obrazek zajmuje całą komórkę */
+  max-width: 300px;   /* ale nie większy niż 300px */
+  height: auto;       /* zachowuje proporcje */
+  display: block;     /* usuwa ewentualne marginesy inline */
+  margin: 0 auto;     /* wyśrodkowanie w komórce */
+}
+
+/* Dodatkowo możesz zrobić, żeby tabela przewijała się na małych ekranach */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+  }
+  table td {
+    display: block;      /* każda komórka w nowym wierszu */
+    margin-bottom: 10px; /* odstęp między zdjęciami */
+  }
+}
+
+  .big-logo {
+    display: none;
+  }
+
+
