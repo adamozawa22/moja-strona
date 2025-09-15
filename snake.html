@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snake Retro</title>
+<title>Mini Snake</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Retro mini canvas */
+  /* Mini retro canvas */
   #game {
+    width: 150px;
+    height: 150px;
     background: #111;
     border: 2px solid #0f0;
     display: block;
@@ -18,16 +20,16 @@
 </head>
 <body>
 
-<canvas id="game" width="200" height="200"></canvas>
+<canvas id="game" width="150" height="150"></canvas>
 
 <script>
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-const box = 10; // mały kwadrat
-let snake = [{x: 10*box, y: 10*box}];
+const box = 10; // każdy kwadrat 10px
+let snake = [{x: 5*box, y: 5*box}];
 let direction = "RIGHT";
-let food = {x: Math.floor(Math.random()*20)*box, y: Math.floor(Math.random()*20)*box};
+let food = {x: Math.floor(Math.random()*15)*box, y: Math.floor(Math.random()*15)*box};
 let score = 0;
 
 document.addEventListener("keydown", e => {
@@ -60,7 +62,7 @@ function draw() {
   // jedzenie
   if(headX === food.x && headY === food.y){
     score++;
-    food = {x: Math.floor(Math.random()*20)*box, y: Math.floor(Math.random()*20)*box};
+    food = {x: Math.floor(Math.random()*15)*box, y: Math.floor(Math.random()*15)*box};
   } else {
     snake.pop();
   }
@@ -80,7 +82,7 @@ function collision(head, arr){
   return arr.some(s => s.x === head.x && s.y === head.y);
 }
 
-let game = setInterval(draw, 150);
+let game = setInterval(draw, 200);
 </script>
 </body>
 </html>
