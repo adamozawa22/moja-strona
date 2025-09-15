@@ -1,4 +1,4 @@
-/* === Minimalist Dark Windows 2015 === */
+//* === Minimalist Dark Mode === */
 
 /* Reset */
 * {
@@ -9,8 +9,8 @@
 
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background-color: #1a1a1a; /* ciemne tło */
-  color: #e0e0e0;
+  background-color: #121212; /* ciemne tło */
+  color: #e0e0e0; /* jasny tekst */
   text-align: center;
   line-height: 1.6;
   min-height: 100vh;
@@ -19,10 +19,9 @@ body {
 
 /* Nagłówki */
 h1, h2, h3 {
-  color: #ffffff;
+  color: #fff;
   font-weight: 700;
   margin: 20px 0;
-  text-shadow: 0 0 8px rgba(0, 150, 255, 0.5);
 }
 
 /* Linki */
@@ -36,18 +35,15 @@ a:hover {
   color: #63b3ed;
 }
 
-/* Okienka / Panel - Glass Effect */
+/* Okienka / panel */
 .window {
   width: 90%;
   max-width: 900px;
   margin: 30px auto;
   padding: 25px;
-  background: rgba(30,30,30,0.8);
+  background-color: #1f1f1f;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  border: 1px solid #333;
   animation: fadeIn 1s ease-out;
 }
 
@@ -61,20 +57,19 @@ table {
   width: 90%;
   margin: 30px auto;
   border-collapse: collapse;
-  background: rgba(25,25,25,0.85);
+  background-color: #1f1f1f;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
 table th, table td {
   padding: 12px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid #333;
   color: #e0e0e0;
 }
 
 table th {
-  background: rgba(40,40,40,0.9);
+  background-color: #2c2c2c;
   font-weight: bold;
 }
 
@@ -84,45 +79,40 @@ input, textarea, select {
   padding: 10px;
   margin: 12px 0;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background-color: rgba(25,25,25,0.85);
+  border: 1px solid #333;
+  background-color: #1f1f1f;
   color: #e0e0e0;
 }
 
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: #1e90ff;
-  box-shadow: 0 0 8px rgba(30,144,255,0.5);
 }
 
 /* Przyciski */
 button {
-  padding: 12px 28px;
+  padding: 10px 25px;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(145deg, #1e90ff, #63b3ed);
+  background-color: #1e90ff;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3);
-  transition: all 0.3s;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background: linear-gradient(145deg, #63b3ed, #1e90ff);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px rgba(255,255,255,0.5);
+  background-color: #63b3ed;
 }
 
 /* Księga gości */
 #ksiega li {
-  background: rgba(25,25,25,0.85);
-  border: 1px solid rgba(255,255,255,0.05);
+  background-color: #1f1f1f;
+  border: 1px solid #333;
   border-radius: 8px;
   margin: 12px 0;
   padding: 12px;
   color: #e0e0e0;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 
 /* Nawigacja */
@@ -136,15 +126,13 @@ button:hover {
 .nav a {
   padding: 10px 18px;
   border-radius: 12px;
-  background: linear-gradient(145deg, #1e90ff, #63b3ed);
+  background-color: #1e90ff;
   color: #fff;
   font-weight: bold;
-  transition: all 0.3s;
 }
 
 .nav a:hover {
-  background: linear-gradient(145deg, #63b3ed, #1e90ff);
-  transform: scale(1.05);
+  background-color: #63b3ed;
 }
 
 /* Scrollbar */
@@ -157,18 +145,15 @@ button:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e90ff;
+  background-color: #1e90ff;
   border-radius: 6px;
 }
 
-/* Logo */
+/* === Logo i responsywność - Dark Minimal === */
 .big-logo img {
   max-width: 400px;
-  margin: 20px auto;
-  display: block;
 }
 
-/* Hamburger menu responsywne */
 @media (max-width: 768px) {
   .big-logo { display: none; }
   table { width: 100%; }
@@ -179,8 +164,100 @@ button:hover {
   .menu.show { display: flex; }
 }
 
-/* Stare menu */
+/* === STARE MENU === */
 .old-menu {
-  display: table;
+  display: table; /* widoczne na PC */
   margin: 20px auto;
+}
+
+/* === HAMBURGER MENU === */
+.navbar {
+  display: none; /* ukryte na PC */
+  justify-content: space-between;
+  align-items: center;
+  background: #1f1f1f;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.menu li a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* === RESPONSYWNOŚĆ === */
+@media (max-width: 768px) {
+  .old-menu { display: none; }
+  .navbar { display: flex; }
+  .menu { display: none; flex-direction: column; background: #2c2c2c; position: absolute; top: 70px; right: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 200px; padding: 10px 0; }
+  .menu.show { display: flex; }
+  .menu li { text-align: center; margin: 5px 0; }
+}
+
+/* Cała zawartość responsywna */
+body, h2, p, img, marquee {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Duże logo */
+.big-logo {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.big-logo img {
+  max-width: 400px;
+}
+
+/* Ukryj DUŻE logo na telefonie */
+@media (max-width: 768px) {
+  table img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  table td {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .big-logo { display: none; }
 }
