@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Easter Egg — Snake</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snake</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Minimalne style dla canvas */
+  body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #121212; }
+  canvas { background: #000; border: 2px solid #fff; }
+</style>
 </head>
-<body class="snake-page">
-  <div class="wrap snake-wrap">
-    <h1 class="snake-title">Snake</h1>
-    <div class="game">
-      <canvas id="board"></canvas>
-      <div class="hud">
-        <div class="box">Wynik: <span id="score">0</span></div>
-        <div class="box">Poziom: <span id="level">1</span></div>
-        <button id="pauseBtn">Pauza</button>
-        <button id="restartBtn">Restart</button>
-      </div>
-      <div class="controls">Sterowanie: ← ↑ → ↓ lub WASD. Na telefonie: przesuń palcem.</div>
-    </div>
-  </div>
-  <script>
-    const canvas = document.getElementById('board');
-    const ctx = canvas.getContext('2d');
-    const scoreEl = document.getElementById('score');
-    const levelEl = document.getElementById('level');
-    const pauseBtn = document.getElementById('pauseBtn');
-    const restartBtn = document.getElementById('restartBtn');
+<body>
+<canvas id="game" width="400" height="400"></canvas>
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
 
-    let CELL, COLS, ROWS, snake, dir, food, running, score, speed, tickTimer, paused, level;
+const box = 20;
+let snake = [{x: 10 * box, y: 10 * box}];
+let direction = "RIGHT";
+let food = {
+  x: Math.floor(Math.random() * 20) * box,
+  y: Math.floor(Math.random() * 20) * box
+};
+let score = 0;
 
-    function resizeCanvas(){
-      const size = Math.min(window.innerWidth*0.95, 360);
-      canvas.width = size;
-      canvas.height = size;
-      CELL = Math.floor(size / 28);
-      COLS = Math.floor(canvas.width / CELL);
-      ROWS = Math.floor(canvas.height / CELL);
+document.addEventListener("keydown", changeDirection);
+
+function changeDirection(event) {
+  const key = event.key;
+  if(key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+  if(key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+  if(key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+  if(key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+}
+
+function draw() {
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  for(let i=0; i<snake.length; i++) {
+    ctx.fillStyle = (i === 0) ? "lime" : "green";
+    ctx.fillRect(snake[i].x, snake[i].y, box, box);
+  }
+
+  ctx.fillStyle = "red";
+  ctx.fillRect(food.x, food.y, box, box);
+
+  let snakeX = snake[0].x;
+  let snakeY = snake[0].y;
+
+  if(direction === "LEFT") snakeX -= box;
+  if(direction === "RIGHT") snakeX += box;
+  if(direction === "UP") snakeY -= box;
+  if(direction === "DOWN") snakeY += box;
+
+  // Snake eat food
+  if(snakeX === food.x && snakeY === food.y){
+    score++;
+    food = {
+      x: Math.floor(Math.random() * 20) * box,
+      y: Math.floor(Math.random() * 20) * box
+    };
+  } else {
+    snake.pop();
+  }
+
+  let newHead = {x: snakeX, y: snakeY};
+
+  // Game over
+  if(snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)){
+    clearInterval(game);
+    alert("Game Over! Twój wynik: " + score);
+  }
+
+  snake.unshift(newHead);
+}
+
+function collision(head, array){
+  for(let i = 0; i < array.length; i++){
+    if(head.x === array[i].x && head.y === array[i].y){
+      return true;
     }
+  }
+  return false;
+}
 
-    window.addEventListener('resize', ()=>{ resizeCanvas(); draw(); });
+let game = setInterval(draw, 150);
+</script>
+</body>
+</html>
 
-    function reset(){
-      resizeCanvas();
-      snake=[{x:Math.floor(COLS/2),y:Math.floor(ROWS/2)}];
-      dir={x:1,y:0};
-      placeFood();
-      score=0; level=1; speed=8; running=true; paused=false;
-      updateHUD(); clearInterval(tickTimer);
-      tickTimer=setInterval(gameTick,1000/speed);
-    }
-
-    function placeFood(){ do{ food={x:Math.floor(Math.random()*COLS),y:Math.floor(Math.random()*ROWS)}; } while(snake.some(s=>s.x===food.x && s.y===food.y)); }
-
-    function gameTick(){
-      if(!running||paused) return;
-      const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
-      if(head.x<0) head.x=COLS-1; if(head.x>=COLS) head.x=0;
-      if(head.y<0) head.y=ROWS-1; if(head.y>=ROWS) head.y=0;
-      if(snake.some(s=>s.x===head.x&&s.y===head.y)){ running=false; gameOver(); return; }
-      snake.unshift(head);
-      if(head.x===food.x&&head.y===food.y){ score+=10; if(score%50===0) levelUp(); placeFood(); } else { snake.pop(); }
-      draw(); updateHUD();
-    }
-
-    function levelUp(){ level++; speed=Math.min(20,speed+1); clearInterval(tickTimer); tickTimer=setInterval(gameTick,1000/speed); }
-
-    function draw(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ctx.globalAlpha=0.06;
-      for(let x=0;x<COLS;x++){ for(let y=0;y<ROWS;y++){ ctx.fillStyle=(x+y)%2?'#071226':'#081329'; ctx.fillRect(x*CELL,y*CELL,CELL,CELL); } }
-      ctx.globalAlpha=1;
-      drawRect(food.x,food.y,'#ff6b6b');
-      snake.forEach((s,i)=>drawRect(s.x,s.y,i===0?'#7dd3fc':'#60a5fa'));
-    }
-
-    function drawRect(cx,cy,color){ const pad=1; ctx.fillStyle=color; ctx.fillRect(cx*CELL+pad,cy*CELL+pad,CELL-pad*2,CELL-pad*2); }
-    function updateHUD(){ scoreEl.textContent=score; levelEl.textContent=level; }
-    function gameOver(){ clearInterval(tickTimer); ctx.fillStyle='rgba(0,0,0,0.6)'; ctx.fillRect(0,canvas.height/2-30,canvas.width,60); ctx.fillStyle='#ffb86b'; ctx.font='20px sans-serif'; ctx.textAlign='center'; ctx.fillText('GAME OVER — Wynik: '+score,canvas.width/2,canvas.height/2+7); }
-
-    window.addEventListener('keydown',e=>{ const k=e.key; if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d','W','A','S','D'].includes(k)) e.preventDefault(); if(k==='ArrowUp'||k==='w'||k==='W') tryChangeDir(0,-1); if(k==='ArrowDown'||k==='s'||k==='S') tryChangeDir(0,1); if(k==='ArrowLeft'||k==='a'||k==='A') tryChangeDir(-1,0); if(k==='ArrowRight'||k==='d'||k==='D') tryChangeDir(1,0); });
-    function tryChangeDir(x,y){ if(snake.length>1&&snake[0].x+x===snake[1].x&&snake[0].y+y===snake[1].y) return; dir={x,y}; }
-
-    pauseBtn.addEventListener('click',()=>{ paused=!paused; pauseBtn.textContent=paused?'Wznów':'Pauza'; });
-    restartBtn.addEventListener('click',()=>{ reset(); draw(); });
-
-    let touchStart=null;
-    canvas.addEventListener('touchstart',e=>{ touchStart=e.touches[0]; });
-    canvas.addEventListener('touchmove',e=>{ e.preventDefault(); });
-    canvas.addEventListener('touchend',e=>{ if(!touchStart)return; const t=e.changedTouches[0]; const dx=t.clientX-touchStart.clientX; const dy=t.clientY-touchStart.clientY; if(Math.abs(dx)>Math.abs(dy)){ if(dx>20) tryChangeDir(1,0); if(dx<-20) tryChangeDir(-1,0); }else{ if(dy>20) tryChangeDir(0,1); if(dy<-20) tryChangeDir(0,-1); } touchStart=null; });
-
-    reset(); draw();
   </script>
 </body>
 </html>
