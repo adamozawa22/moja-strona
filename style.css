@@ -149,7 +149,7 @@ button:hover {
   border-radius: 6px;
 }
 
-/* Logo i responsywność */
+/* === Logo i responsywność - Dark Minimal === */
 .big-logo img {
   max-width: 400px;
 }
@@ -160,9 +160,10 @@ button:hover {
   table td { display: block; margin-bottom: 10px; }
   .old-menu { display: none; }
   .navbar { display: flex; justify-content: space-between; align-items: center; }
-  .menu { display: none; flex-direction: column; background-color: #1e90ff; position: absolute; top: 70px; right: 20px; border-radius: 8px; width: 200px; padding: 10px 0; }
+  .menu { display: none; flex-direction: column; background-color: #1f1f1f; position: absolute; top: 70px; right: 20px; border-radius: 8px; width: 200px; padding: 10px 0; }
   .menu.show { display: flex; }
 }
+
 /* === STARE MENU === */
 .old-menu {
   display: table; /* widoczne na PC */
@@ -174,10 +175,10 @@ button:hover {
   display: none; /* ukryte na PC */
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+  background: #1f1f1f;
   padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   position: relative;
   z-index: 100;
 }
@@ -205,48 +206,22 @@ button:hover {
   font-weight: bold;
   text-decoration: none;
   padding: 8px 14px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
   transition: 0.3s;
 }
 
 .menu li a:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.15);
 }
 
 /* === RESPONSYWNOŚĆ === */
 @media (max-width: 768px) {
-  /* Stare menu znika */
-  .old-menu {
-    display: none;
-  }
-
-  /* Hamburger pokazuje się na telefonie */
-  .navbar {
-    display: flex;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    background: #0078d7;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    width: 200px;
-    padding: 10px 0;
-  }
-
-  .menu.show {
-    display: flex;
-  }
-
-  .menu li {
-    text-align: center;
-    margin: 5px 0;
-  }
+  .old-menu { display: none; }
+  .navbar { display: flex; }
+  .menu { display: none; flex-direction: column; background: #2c2c2c; position: absolute; top: 70px; right: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 200px; padding: 10px 0; }
+  .menu.show { display: flex; }
+  .menu li { text-align: center; margin: 5px 0; }
 }
 
 /* Cała zawartość responsywna */
@@ -268,26 +243,21 @@ body, h2, p, img, marquee {
 /* Ukryj DUŻE logo na telefonie */
 @media (max-width: 768px) {
   table img {
-  width: 100%;        /* obrazek zajmuje całą komórkę */
-  max-width: 300px;   /* ale nie większy niż 300px */
-  height: auto;       /* zachowuje proporcje */
-  display: block;     /* usuwa ewentualne marginesy inline */
-  margin: 0 auto;     /* wyśrodkowanie w komórce */
-}
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 
-/* Dodatkowo możesz zrobić, żeby tabela przewijała się na małych ekranach */
-@media (max-width: 768px) {
   table {
     width: 100%;
   }
+
   table td {
-    display: block;      /* każda komórka w nowym wierszu */
-    margin-bottom: 10px; /* odstęp między zdjęciami */
+    display: block;
+    margin-bottom: 10px;
   }
+
+  .big-logo { display: none; }
 }
-
-  .big-logo {
-    display: none;
-  }
-
-
