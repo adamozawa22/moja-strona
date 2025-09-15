@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ładowanie...</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Preloader stylowany pod Windows 7/Vista */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ffffff 0%, #e6f3ff 100%);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    .loader-box {
+      text-align: center;
+    }
+
+    .loader {
+      width: 70px;
+      height: 70px;
+      border: 6px solid rgba(0, 120, 215, 0.3);
+      border-top: 6px solid #0078d7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    h2 {
+      color: #005a9e;
+      text-shadow: 0 0 5px rgba(0, 120, 215, 0.6);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <div>Ładowanie...</div>
-  <div class="loader"></div>
+  <div class="loader-box window">
+    <h2>Ładowanie strony...</h2>
+    <div class="loader"></div>
+  </div>
 
   <script>
     setTimeout(() => {
-      window.location.href = "index.html";
-    }, 3000); // 3 sekundy i przenosi do strony głównej
+      window.location.href = "index.html"; // przekierowanie po 3s
+    }, 3000);
   </script>
 </body>
 </html>
