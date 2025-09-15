@@ -1,183 +1,356 @@
-/* === Modern Minimal Windows 2015 Style === */
+/* === MAX Windows 7 / Vista Style 2009-2010 === */
+
+
 
 /* Reset */
-* {
+
+html, body {
+
   margin: 0;
+
   padding: 0;
-  box-sizing: border-box;
+
+  height: 100%;
+
 }
+
+
 
 body {
+
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background-color: #141414;
-  color: #e0e0e0;
-  min-height: 100vh;
-  line-height: 1.5;
+
+  background: #ffffff; /* Białe tło */
+
+  color: #000;
+
   text-align: center;
+
   overflow-x: hidden;
+
+  background-image: radial-gradient(circle at top, #ffffff 0%, #e6f3ff 100%);
+
 }
+
+
 
 /* Nagłówki */
-h1, h2 {
-  color: #00aaff;
+
+h1, h2, h3 {
+
+  color: #005a9e;
+
+  text-shadow: 0 0 5px rgba(0, 120, 215, 0.6), 0 0 10px rgba(0, 120, 215, 0.4);
+
   font-weight: 700;
+
   margin: 20px 0;
-  text-shadow: 0 0 6px rgba(0,170,255,0.5);
+
 }
 
-/* Duże logo */
-.big-logo img {
-  max-width: 300px;
-  margin: 20px auto;
-  display: block;
+
+
+/* Linki */
+
+a {
+
+  color: #0078d7;
+
+  text-decoration: none;
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  transition: all 0.3s ease;
+
+  background: linear-gradient(to bottom, #e6f3ff, #bcdcff);
+
+  box-shadow: inset 0 1px #ffffff, 0 2px 6px rgba(0,0,0,0.15);
+
 }
 
-/* Kafelkowe karty */
-.card {
-  background: rgba(30,30,30,0.85);
-  border-radius: 16px;
-  padding: 25px;
-  margin: 20px auto;
-  max-width: 600px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s, box-shadow 0.3s;
+a:hover {
+
+  background: linear-gradient(to bottom, #ffffff, #a7d3ff);
+
+  box-shadow: inset 0 1px #ffffff, 0 4px 12px rgba(0,0,0,0.2);
+
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
-}
 
-/* Przycisk */
-button {
-  padding: 12px 28px;
-  border-radius: 20px;
-  border: none;
-  background: linear-gradient(135deg, #00aaff, #66d0ff);
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 5px;
-  transition: all 0.3s;
-}
 
-button:hover {
-  background: linear-gradient(135deg, #66d0ff, #00aaff);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-}
+/* Aero Panel (okienka) */
 
-/* Tabele */
-table {
+.window {
+
   width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
-  border-collapse: collapse;
-  background: rgba(25,25,25,0.85);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+
+  max-width: 900px;
+
+  margin: 30px auto;
+
+  padding: 25px;
+
+  background: rgba(0,120,215,0.15);
+
+  border: 1px solid rgba(0,0,0,0.25);
+
+  border-radius: 18px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25), inset 0 1px rgba(255,255,255,0.8);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: fadeIn 1s ease-out;
+
 }
 
-table th, table td {
-  padding: 12px;
-  color: #e0e0e0;
-  border: 1px solid rgba(255,255,255,0.05);
+@keyframes fadeIn {
+
+  from { opacity: 0; transform: translateY(30px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+/* Tabela MAX */
+
+table {
+
+  width: 90%;
+
+  margin: 30px auto;
+
+  border-collapse: collapse;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  background: linear-gradient(to bottom, #d7ebff, #b0d4ff);
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
 }
 
 table th {
-  background: rgba(40,40,40,0.9);
-  font-weight: bold;
-}
 
-/* Inputy i textarea */
-input, textarea, select {
-  width: 85%;
-  max-width: 500px;
-  padding: 10px;
-  margin: 12px 0;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background-color: rgba(25,25,25,0.85);
-  color: #e0e0e0;
-}
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: #00aaff;
-  box-shadow: 0 0 8px rgba(0,170,255,0.5);
-}
+  color: #fff;
 
-/* Media i log */
-video, audio, iframe, canvas {
-  width: 100%;
-  max-width: 100%;
-  border-radius: 12px;
-  margin-top: 10px;
-}
-
-#results {
-  background: rgba(30,30,30,0.85);
   padding: 12px;
-  border-radius: 12px;
-  color: #66d0ff;
-  font-family: monospace;
-  max-height: 150px;
-  overflow-y: auto;
-  margin-top: 10px;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  font-size: 1.1em;
+
 }
+
+table td {
+
+  padding: 12px;
+
+  border: 1px solid rgba(0,0,0,0.1);
+
+  background: rgba(255,255,255,0.85);
+
+  color: #000;
+
+}
+
+
+
+/* Inputy */
+
+input, textarea {
+
+  width: 85%;
+
+  padding: 10px;
+
+  margin: 12px 0;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(0,0,0,0.3);
+
+  background: linear-gradient(to bottom, #ffffff, #e6f3ff);
+
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+
+  transition: all 0.3s;
+
+}
+
+input:focus, textarea:focus {
+
+  border: 1px solid #0078d7;
+
+  box-shadow: 0 0 8px rgba(0,120,215,0.7);
+
+}
+
+
+
+/* Przyciski Aero */
+
+button {
+
+  padding: 12px 28px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+
+  color: #fff;
+
+  font-weight: bold;
+
+  font-size: 1em;
+
+  cursor: pointer;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.5), 0 5px 15px rgba(0,0,0,0.3);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+button:hover {
+
+  transform: translateY(-2px);
+
+  background: linear-gradient(to bottom, #6bc0ff, #1c7fe0);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.6), 0 6px 18px rgba(0,0,0,0.4);
+
+}
+
+
+
+/* Księga gości */
+
+#ksiega {
+
+  list-style: none;
+
+  padding: 0;
+
+  width: 90%;
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+}
+
+#ksiega li {
+
+  background: linear-gradient(to bottom, #e6f3ff, #c7e0ff);
+
+  border: 1px solid rgba(0,0,0,0.2);
+
+  border-radius: 10px;
+
+  margin: 12px 0;
+
+  padding: 12px;
+
+  color: #000;
+
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+
+  transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+#ksiega li:hover {
+
+  transform: scale(1.03);
+
+  box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+
+}
+
+
 
 /* Nawigacja */
+
 .nav {
+
   display: flex;
+
   justify-content: center;
+
   gap: 15px;
+
   margin: 25px 0;
+
 }
 
 .nav a {
+
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
+
   padding: 10px 18px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #00aaff, #66d0ff);
+
+  border-radius: 20px;
+
   color: #fff;
+
   font-weight: bold;
-  transition: all 0.3s;
+
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 4px 12px rgba(0,0,0,0.3);
+
+  transition: transform 0.2s, box-shadow 0.2s;
+
 }
 
 .nav a:hover {
-  background: linear-gradient(135deg, #66d0ff, #00aaff);
-  transform: scale(1.05);
+
+  transform: scale(1.15);
+
+  box-shadow: inset 0 1px rgba(255,255,255,0.6), 0 6px 18px rgba(0,0,0,0.4);
+
 }
 
+
+
 /* Scrollbar */
+
 ::-webkit-scrollbar {
-  width: 10px;
+
+  width: 12px;
+
 }
 
 ::-webkit-scrollbar-track {
-  background: #141414;
+
+  background: #e6f3ff;
+
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00aaff;
+
+  background: linear-gradient(#5bb8ff, #0078d7);
+
   border-radius: 6px;
-}
-/* === Logo i responsywność - Dark Minimal === */
-.big-logo img {
-  max-width: 400px;
-}
 
-@media (max-width: 768px) {
-  .big-logo { display: none; }
-  table { width: 100%; }
-  table td { display: block; margin-bottom: 10px; }
-  .old-menu { display: none; }
-  .navbar { display: flex; justify-content: space-between; align-items: center; }
-  .menu { display: none; flex-direction: column; background-color: #1f1f1f; position: absolute; top: 70px; right: 20px; border-radius: 8px; width: 200px; padding: 10px 0; }
-  .menu.show { display: flex; }
-}
+  border: 2px solid #ffffff;
 
+}
 /* === STARE MENU === */
 .old-menu {
   display: table; /* widoczne na PC */
@@ -189,10 +362,10 @@ video, audio, iframe, canvas {
   display: none; /* ukryte na PC */
   justify-content: space-between;
   align-items: center;
-  background: #1f1f1f;
+  background: linear-gradient(to bottom, #5bb8ff, #0078d7);
   padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   position: relative;
   z-index: 100;
 }
@@ -220,22 +393,48 @@ video, audio, iframe, canvas {
   font-weight: bold;
   text-decoration: none;
   padding: 8px 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.1);
   transition: 0.3s;
 }
 
 .menu li a:hover {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.25);
 }
 
 /* === RESPONSYWNOŚĆ === */
 @media (max-width: 768px) {
-  .old-menu { display: none; }
-  .navbar { display: flex; }
-  .menu { display: none; flex-direction: column; background: #2c2c2c; position: absolute; top: 70px; right: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 200px; padding: 10px 0; }
-  .menu.show { display: flex; }
-  .menu li { text-align: center; margin: 5px 0; }
+  /* Stare menu znika */
+  .old-menu {
+    display: none;
+  }
+
+  /* Hamburger pokazuje się na telefonie */
+  .navbar {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #0078d7;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    width: 200px;
+    padding: 10px 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    text-align: center;
+    margin: 5px 0;
+  }
 }
 
 /* Cała zawartość responsywna */
@@ -257,22 +456,25 @@ body, h2, p, img, marquee {
 /* Ukryj DUŻE logo na telefonie */
 @media (max-width: 768px) {
   table img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
+  width: 100%;        /* obrazek zajmuje całą komórkę */
+  max-width: 300px;   /* ale nie większy niż 300px */
+  height: auto;       /* zachowuje proporcje */
+  display: block;     /* usuwa ewentualne marginesy inline */
+  margin: 0 auto;     /* wyśrodkowanie w komórce */
+}
 
+/* Dodatkowo możesz zrobić, żeby tabela przewijała się na małych ekranach */
+@media (max-width: 768px) {
   table {
     width: 100%;
   }
-
   table td {
-    display: block;
-    margin-bottom: 10px;
+    display: block;      /* każda komórka w nowym wierszu */
+    margin-bottom: 10px; /* odstęp między zdjęciami */
   }
-
-  .big-logo { display: none; }
 }
+
+  .big-logo {
+    display: none;
+  }
 
